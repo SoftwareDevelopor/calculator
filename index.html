@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="calculate.css" />
+    <link rel="stylesheet" href="media.css">
+</head>
+
+<body>
+    <h1>Calculator App</h1>
+    <div class="main">
+        <h3>Calculate the expresion!</h3>
+        <input type="text" name="" id="" value="" placeholder="Enter the values"/>
+        <input type="text" name="" id="" value="" placeholder=""/>
+        <div class="numbers">
+            <ul>
+                <li>MC</li>
+                <li>MR</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                
+            </ul>
+            <ul>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>0</li>
+            </ul>
+            <ul>
+                <li>+</li>
+                <li>-</li>
+                <li>*</li>
+                <li>/</li>
+                <li>%</li>
+                <li>x^2</li>
+            </ul>
+            <ul>
+                <li>log</li>
+                <li>=</li>
+                <li>sin</li>
+                <li>cos</li>
+                <li>tan</li>
+                <li>ln</li>
+            </ul>
+            <ul>
+                <li>SQRT</li>
+                <li>1/x</li>
+                <li>crt</li>
+                <li>x^3</li>
+                <li>|x|</li>
+                <li>&pi;</li>
+            </ul>
+            <ul>
+                <li>&lceil;x&rceil;</li>
+                <li>&lfloor;x&rfloor;</li>
+                <li>10<sup>x</sup></li>
+                <li><</li>
+                <li>e</li>
+                <li>e<sup>x</sup></li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    let inputField = document.querySelectorAll("input");
+    let numberList = document.querySelector(".main");
+
+    numberList.addEventListener("click", (event) => {
+        let listItem = event.target;
+
+        
+
+        let val = '';
+        if (inputField[0].value == "") {
+            val = 0;
+        }
+        else {
+            val = inputField[0].value;
+        }
+        if (listItem.tagName != "LI") {
+            return;
+        }
+
+        if (listItem.innerHTML == '=') {
+            inputField[0].value = eval(val);
+        }
+        else if (listItem.innerHTML == "MC") {
+            inputField[0].value = "";
+        }
+        else if (listItem.innerHTML == '<') {
+
+        }
+        else if (listItem.innerHTML == 'MR') {
+            inputField[1].value = inputField[0].value;
+        }
+        else if (listItem.innerHTML == 'x^2') {
+            inputField[0].value = Math.pow(val, 2);
+        }
+        else if (listItem.innerHTML == 'x^3') {
+            inputField[0].value = Math.pow(val, 3);
+        }
+        else if (listItem.innerHTML == 'crt') {
+            inputField[0].value = Math.cbrt(val);
+        }
+        else if(listItem.innerHTML=='log'){
+            inputField[0].value=Math.log10(val);
+        }
+        else if (listItem.innerHTML == 'SQRT') {
+            inputField[0].value = Math.sqrt(val);
+        }
+        else if (listItem.innerHTML == 'sin') {
+            inputField[0].value = Math.sin(val);
+        }
+        else if (listItem.innerHTML == 'cos') {
+            inputField[0].value = Math.cos(val);
+        }
+        else if (listItem.innerHTML == 'tan') {
+            inputField[0].value = Math.tan(val);
+        }
+        else if (listItem.innerHTML == 'ln') {
+            inputField[0].value = Math.log(val);
+        }
+        else if (listItem.innerHTML == '1/x') {
+            inputField[0].value = 1 / val;
+        }
+        else if (listItem.innerHTML == '|x|') {
+            inputField[0].value = Math.abs(val);
+        }
+        else if (listItem.innerHTML == '&pi;') {
+            inputField[0].value = Math.PI;
+        }
+        else if (listItem.innerHTML == 'e') {
+            inputField[0].value = Math.E;
+        }
+        else if (listItem.innerHTML == 'e<sup>x</sup>') {
+            inputField[0].value = Math.exp(val);
+        }
+        else if (listItem.innerHTML == '&lceil;x&rceil;') {
+            inputField[0].value = Math.ceil(val);
+        }
+        else if (listItem.innerHTML == '&lfloor;x&rfloor;') {
+            inputField[0].value = Math.floor(val);
+        }
+        else if (listItem.innerHTML == '10<sup>x</sup>') {
+            inputField[0].value = Math.pow(10, val);
+        }
+        else{
+            if (val == 0) {
+                inputField[0].value = listItem.innerHTML;
+            }
+            else {
+                inputField[0].value += listItem.innerHTML;
+            }
+        }
+
+    })
+</script>
+
+</html>
